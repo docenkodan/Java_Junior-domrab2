@@ -2,17 +2,13 @@ package Tournament;
 
 public class command {
 	
-	public String command_win, command_loose = "";
-	public int goals_scored;
-	public int missed_goals;
-	boolean draw = false;
+	private String command_win, command_loose = "";
+	private boolean draw = false;
 	
 	public void command (String command1, String command2, int goals_scored, int missed_goals)
 	{
 		this.command_win = command1;
 		this.command_loose = command2;
-		this.goals_scored = goals_scored;
-		this.missed_goals = missed_goals;
 		if (goals_scored == missed_goals)
 		{
 			draw = true;
@@ -30,7 +26,6 @@ public class command {
 				this.command_loose = command1;
 			}
 		}
-		//System.out.printf("%s-%d %s-%d %b\n",command_win, goals_scored, command_loose, missed_goals, draw);
 		tournament.calculate_table(command_win, command_loose, draw);
 	}
 	

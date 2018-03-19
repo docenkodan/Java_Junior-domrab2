@@ -19,9 +19,9 @@ public class tournament {
 		result.goals(score);
 	}
 	
-	public static String[] commands = {" "," "," "," "," "," "," "," "," "," "};	//Массив комманд
-	public static int[] commands_points = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};			//Очки комманд
-	public static int i = 0;
+	private static String[] commands = {" "," "," "," "," "," "," "," "," "," "};	//Массив комманд
+	private static int[] commands_points = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};			//Очки комманд
+	private static int i = 0;
 	
 	public static void calculate_table(String command_win, String command_loose, boolean draw) {
 		boolean command_win_point = false;

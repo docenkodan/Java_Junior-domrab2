@@ -2,8 +2,8 @@ package Tournament;
 
 public class result {
 	
-	public String command1, command2;
-	public int command1_goals, command2_goals;
+	private String command1, command2;
+	private int command1_goals, command2_goals;
 	
 	public void commands(String command1, String command2) {
 		this.command1 = command1;
