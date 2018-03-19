@@ -30,8 +30,8 @@ public class command {
 				this.command_loose = command1;
 			}
 		}
-		tournament tour = new tournament ();
-		tour.calculate_table(command_win, command_loose, draw);
+		//System.out.printf("%s-%d %s-%d %b\n",command_win, goals_scored, command_loose, missed_goals, draw);
+		tournament.calculate_table(command_win, command_loose, draw);
 	}
 	
 	

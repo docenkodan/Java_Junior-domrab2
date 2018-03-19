@@ -14,19 +14,18 @@ public class tournament {
 		String command2 = scan.nextLine();
 		System.out.print("Введите счет (2-0) : ");
 		String score = scan.nextLine();
-		int command1_goals = 0, command2_goals = 0;
 		
 		result.commands(command1, command2);
 		result.goals(score);
 	}
 	
-	public String[] commands = {null,"w","q"};		//Массив комманд
-	public int[] commads_points = {0, 0, 0};	//Очки комманд
+	public static String[] commands = {" "," "," "," "," "," "," "," "," "," "};	//Массив комманд
+	public static int[] commands_points = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};			//Очки комманд
+	public static int i = 0;
 	
-	public void calculate_table(String command_win, String command_lose, boolean draw) {
-		int i = 0;
+	public static void calculate_table(String command_win, String command_loose, boolean draw) {
 		boolean command_win_point = false;
-		boolean command_lose_point = false;
+		boolean command_loose_point = false;
 		
 		for (i=0;i<commands.length;i++)
 		{
@@ -34,56 +33,74 @@ public class tournament {
 			{
 				command_win_point = true;
 				if (draw)
-					commads_points[i] ++;
+					commands_points[i] ++;
 				else
-					commads_points[i] += 3;
+					commands_points[i] += 3;
 			}
-			if (commands[i].equals(command_lose))
+			if (commands[i].equals(command_loose))
 			{
-				command_lose_point = true;
+				command_loose_point = true;
 				if (draw)
-					commads_points[i] ++;
-				else
-					commads_points[i] += 3;
+					commands_points[i] ++;
 			}
 		}
 		
-		if (command_win_point = false)
+		if (command_win_point == false)
 		{
-			for (i=0;i<commands.length;i++)
+			i = 0;
+			while (command_win_point == false)
 			{
-			if (commands[i]==null)
-			{
-				commands[i] = command_win;
-				if (draw)
-					commads_points[i] ++;
-				else
-					commads_points[i] += 3;
-			}
+				if (commands[i]==" ")
+				{
+					commands[i] = command_win;
+					command_win_point = true;
+					if (draw)
+						commands_points[i] ++;
+					else
+						commands_points[i] += 3;
+				}
+				i ++;
 			}
 		}			
 		
-		if (command_lose_point = false)
+		if (command_loose_point == false)
 		{
-			for (i=0;i<commands.length;i++)
+			i = 0;
+			while (command_loose_point == false)
 			{
-			if (commands[i]==null)
-			{
-				commands[i] = command_lose;
-				if (draw)
-					commads_points[i] ++;
-				else
-					commads_points[i] += 0;
-			}
+				if (commands[i]==" ")
+				{
+					commands[i] = command_loose;
+					command_loose_point = true;
+					if (draw)
+						commands_points[i] ++;
+					else
+						commands_points[i] += 0;
+				}
+				i ++;
 			}
 		}
-		
 	}
 	
-	public void print_table(){
-		for (int i=0;i<commands.length;i++)
-			if (commands[i] != null)
-		System.out.println(commands[i] + " " + commads_points[i]);
+	public void sort_and_print_table(){
+		int change_int;
+		String change_Str;
+		//Сортировка
+		for (i=0;i<commands.length;i++)
+			for (int j = commands.length-1; j > i; j--)
+				if (commands_points[i] < commands_points[j])
+				{
+					change_int = commands_points[i];
+					commands_points[i] = commands_points[j];
+					commands_points[j] = change_int;
+					change_Str = commands[i];
+					commands[i] = commands[j];
+					commands[j] = change_Str;
+				}
+		//Печать
+		for (i=0;i<commands.length;i++)
+			if (commands[i] != " ")
+		System.out.println(commands[i] + " " + commands_points[i]);
 	}
 		
 }
