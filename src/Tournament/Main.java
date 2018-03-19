@@ -6,9 +6,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		Scanner scan = new Scanner (System.in);
-		//result result = new result ();
 		tournament tour = new tournament ();
-		//command command = new command ();
 		String index = "";
 		
 		tour.add_result();
