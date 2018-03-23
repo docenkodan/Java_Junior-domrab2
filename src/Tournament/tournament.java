@@ -85,7 +85,10 @@ public class tournament {
 	public void sort_and_print_table(){
 		int change_int;
 		String change_Str;
+		boolean unsorted;
+    	Object temp;
 		//Сортировка
+		
 		for (i=0;i<commands.length;i++)
 			for (int j = commands.length-1; j > i; j--)
 				if (commands_points[i] < commands_points[j])
@@ -97,6 +100,25 @@ public class tournament {
 					commands[i] = commands[j];
 					commands[j] = change_Str;
 				}
+		
+		//быстрая сортировка
+		/*for (i=commands.length-1;i>0;i--)
+		{
+    		unsorted = false;
+    		for (int j = 0; j < i; j++)
+    			if (commands_points[j] > commands_points[j+1])
+    			{
+    				temp = commands_points[j+1];
+					commands_points[j+1] = commands_points[j];
+					commands_points[j] = (int) temp;
+					temp = commands[j+1];
+					commands[j+1] = commands[j];
+					commands[j] = (String) temp;
+		    		unsorted = true;
+    			}
+    		if (!unsorted)  return;
+		}*/
+		
 		//Печать
 		for (i=0;i<commands.length;i++)
 			if (commands[i] != " ")
